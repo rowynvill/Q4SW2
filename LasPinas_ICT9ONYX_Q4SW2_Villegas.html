@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Q4 Searwork 2</title>
+	<style type="text/css">
+		table {
+			border-collapse: collapse;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			width: 100%;
+		}
+		th, td {
+			padding: 10px;
+			text-align: center;
+			border: 1px solid black;
+		}
+		th {
+			background-color: #008000;
+			color: white;
+		}
+		td {
+			background-color: #F0F8FF;
+			color: black;
+		}
+	</style>
+</head>
+<body>
+	<h1>Weather Program(body temp in blanket)</h1>
+	<div>
+		<p id="datetime"></p>
+		<form>
+			<label for="tempF">Temperature (°F):</label>
+			<input type="number" id="tempF" name="tempF" min="-459.67" required> <!-- absolute zero in °F -->
+			<button type="button" onclick="convertTemp()">Convert</button>
+		</form>
+		<p id="result"></p>
+		<table>
+			<thead>
+				<tr>
+					<th>Temperature (°C)</th>
+					<th>Condition</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>-50 to -40</td>
+					<td>to much cold Cold</td>
+				</tr>
+				<tr>
+					<td>-39.9 to -30</td>
+					<td>2 much Cold</td>
+				</tr>
+				<tr>
+					<td>-29.9 to -20</td>
+					<td>kinda Cold tbh</td>
+				</tr>
+				<tr>
+					<td>-19.9 to 0</td>
+					<td>just right🤗</td>
+				</tr>
+				<tr>
+					<td>0 to 15</td>
+					<td>warm</td>
+				</tr>
+				<tr>
+					<td>15.1 to 25</td>
+					<td>very warm</td>
+				</tr>
+				<tr>
+					<td>25.1 to 35</td>
+					<td>hot</td>
+				</tr>
+				<tr>
+					<td>35.1 to 45</td>
+					<td>too hot</td>
+				</tr>
+				<tr>
+					<td>45.1 to 55</td>
+					<td>Veryyy Hot</td>
+				</tr>
+				<tr>
+					<td>55.1 to 100</td>
+					<td>Extremely Hot(you jk)</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<script>
+		function convertTemp() {
+			let tempF = document.getElementById("tempF").value;
+			if (tempF) {
+				let tempC = (tempF - 32) * 5/9;
+				tempC = Math.round(tempC * 10) / 10; // round to 1 decimal place
+				document.getElementById("result").innerHTML = tempF + "°F = " + tempC + "°C";
+			}
+		}
+
+		function displayDateTime() {
+			let now = new Date();
+			let dateStr = now.toLocaleDateString();
+			let timeStr = now.toLocaleTimeString();
+			document.getElementById("datetime").innerHTML = "Current date and time: " + dateStr + " " + timeStr;
+		}
+
+		displayDateTime();
+	</script>
+</body>
+</html>
